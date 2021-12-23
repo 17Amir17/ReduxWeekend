@@ -26,3 +26,9 @@ code {
 .user-form {
   width: 100%;
 }
+
+#root,
+body,
+.App {
+  height: 100vh;
+}

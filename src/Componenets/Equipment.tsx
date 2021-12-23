@@ -6,6 +6,7 @@ import React, {
 import { useAppDispatch, useAppSelector } from '../ReduxManagement/hooks';
 import { Table, Button } from 'react-bootstrap';
 import { removeEquipment, updateEquipment } from '../Reducers/equipmentReducer';
+import { resetUser } from '../Reducers/userReducer';
 
 export default function Equipment() {
   const user = useAppSelector((state) => state.user);
@@ -78,6 +79,13 @@ export default function Equipment() {
           })}
         </tbody>
       </Table>
+      <Button
+        onClick={() => {
+          dispatch(resetUser());
+        }}
+      >
+        Change User
+      </Button>
     </div>
   );
 }

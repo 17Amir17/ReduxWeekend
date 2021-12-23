@@ -8,9 +8,15 @@ function App() {
   const user = useAppSelector((state) => state.user);
   return (
     <div className="App">
-      <UserForm />
-      <Equipment />
-      {user.userSet ? <AddEquipment /> : <></>}
+      {user.userSet ? (
+        <>
+          {' '}
+          <Equipment />
+          <AddEquipment />
+        </>
+      ) : (
+        <UserForm />
+      )}
     </div>
   );
 }
