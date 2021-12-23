@@ -14,7 +14,6 @@ export default function Equipment() {
     const target =
       event.target.parentElement?.parentElement?.children[1].innerHTML;
     const quantity = Number(event.target.value);
-    console.log(typeof quantity);
 
     if (target) dispatch(updateEquipment({ target, update: { quantity } }));
   };

@@ -26,7 +26,7 @@ export default function UserForm() {
   };
 
   return (
-    <div>
+    <div className="user-form">
       <Form.Group className="mb-3">
         <Form.Label>Full Name</Form.Label>
         <Form.Control type="text" placeholder="eq: John Doe" ref={nameRef} />
