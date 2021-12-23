@@ -75,9 +75,15 @@ export const equipSlice = createSlice({
         });
       }
     },
+    removeEquipment: (state, action: PayloadAction<string>) => {
+      state.equipment = state.equipment.filter(
+        (eq) => eq.name !== action.payload
+      );
+    },
   },
 });
 
-export const { updateEquipment, addEquipment } = equipSlice.actions;
+export const { updateEquipment, addEquipment, removeEquipment } =
+  equipSlice.actions;
 
 export default equipSlice.reducer;
