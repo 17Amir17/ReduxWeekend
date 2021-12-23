@@ -3,35 +3,33 @@ import type { RootState } from '../ReduxManagement/store';
 
 // Define a type for the slice state
 interface UserState {
-  value: number;
+  fullName: string;
+  workplace: string;
+  date: Date;
+  userSet?: boolean;
 }
 
 // Define the initial state using that type
-const initialState: UserState = {
-  value: 0,
-};
+const initialState = { userSet: false } as UserState;
 
 export const userSlice = createSlice({
   name: 'user',
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
     // Use the PayloadAction type to declare the contents of `action.payload`
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
+    setUser: (state, action: PayloadAction<UserState>) => {
+      state.fullName = action.payload.fullName;
+      state.date = action.payload.date;
+      state.workplace = action.payload.workplace;
+      state.userSet = false;
     },
   },
 });
 
-export const { increment, decrement, incrementByAmount } = userSlice.actions;
+export const { setUser } = userSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.user.value;
+export const selectUser = (state: RootState) => state.user;
 
 export default userSlice.reducer;
