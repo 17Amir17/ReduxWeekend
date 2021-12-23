@@ -1,6 +1,13 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  AnyAction,
+  createSlice,
+  PayloadAction,
+  ThunkAction,
+} from '@reduxjs/toolkit';
 import Swal from 'sweetalert2';
 import { fullEquipmentList } from '../db/equipmentSeed';
+import { RootState } from '../ReduxManagement/store';
+import { resetUser } from './userReducer';
 
 // Define a type for the slice state
 interface EquipmentState {
@@ -82,6 +89,19 @@ export const equipSlice = createSlice({
     },
   },
 });
+
+export const submitEquipment = (
+  equipment: Equipment[]
+): ThunkAction<void, RootState, unknown, AnyAction> => {
+  // sending equiplment
+  // .....
+  console.log('Sending equipment');
+  return async function (dispatch, _getState) {
+    setTimeout(() => {
+      dispatch(resetUser());
+    }, 1000);
+  };
+};
 
 export const { updateEquipment, addEquipment, removeEquipment } =
   equipSlice.actions;
