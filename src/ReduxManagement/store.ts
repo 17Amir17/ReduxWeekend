@@ -1,7 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { Middleware } from 'redux';
 import equipmentReducer from '../Reducers/equipmentReducer';
 import userReducer from '../Reducers/userReducer';
 // ...
+
+const middleware: Middleware[] = [];
+
+const logger: Middleware = (store) => (next) => (action) => {
+  console.log('dispatching', action);
+  let result = next(action);
+  console.log('next state', store.getState());
+  return result;
+};
+
+if (process.env.NODE_ENV !== 'PRODUCTION') {
+  middleware.push(logger);
+}
 
 const store = configureStore({
   reducer: {
@@ -10,7 +24,7 @@ const store = configureStore({
     user: userReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }),
+    getDefaultMiddleware({ serializableCheck: false }).concat(middleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
