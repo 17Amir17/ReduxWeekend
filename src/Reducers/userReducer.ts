@@ -22,7 +22,7 @@ export const userSlice = createSlice({
       state.fullName = action.payload.fullName;
       state.date = action.payload.date;
       state.workplace = action.payload.workplace;
-      state.userSet = false;
+      state.userSet = true;
     },
   },
 });
