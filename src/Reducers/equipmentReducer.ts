@@ -5,6 +5,7 @@ import {
   ThunkAction,
 } from '@reduxjs/toolkit';
 import Swal from 'sweetalert2';
+import Equipment from '../Componenets/Equipment';
 import { fullEquipmentList } from '../db/equipmentSeed';
 import { RootState } from '../ReduxManagement/store';
 import { resetUser } from './userReducer';
@@ -45,14 +46,10 @@ export const equipSlice = createSlice({
         (eq) => eq.name === action.payload.target
       );
       if (eqToUpdate) {
-        if (action.payload.update.name) {
-          eqToUpdate.name = action.payload.update.name;
-        }
-        if (action.payload.update.quantity) {
-          eqToUpdate.quantity = action.payload.update.quantity;
-        }
-        if (action.payload.update.fullQuantity) {
-          eqToUpdate.fullQuantity = action.payload.update.fullQuantity;
+        for (let att in action.payload.update) {
+          const transformedAtt = att as keyof Equipment;
+          (eqToUpdate as any)[transformedAtt] = //This is the only solution I found https://github.com/microsoft/TypeScript/issues/31663
+            action.payload.update[transformedAtt];
         }
       } else {
         Swal.fire({
