@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ReduxWeekend/build/static/css/main.6c9c57d4.css",
+    "main.js": "/ReduxWeekend/build/static/js/main.304e95be.js",
+    "index.html": "/ReduxWeekend/build/index.html",
+    "main.6c9c57d4.css.map": "/ReduxWeekend/build/static/css/main.6c9c57d4.css.map",
+    "main.304e95be.js.map": "/ReduxWeekend/build/static/js/main.304e95be.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6c9c57d4.css",
+    "static/js/main.304e95be.js"
+  ]
+}
